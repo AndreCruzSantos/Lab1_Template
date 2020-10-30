@@ -1,5 +1,7 @@
 package pt.pa.adts;
 
+import java.sql.SQLOutput;
+
 /**
  * TODO: Fornecer documentação da classe.
  *
@@ -12,9 +14,64 @@ public class QueueLinkedList<T> implements Queue<T> {
 
     public QueueLinkedList() {
         //TODO: construtor deve inicializar uma fila vazia
+        this.header = new Node(null,null,null);
+        this.trailer = new Node(null,null,null);
+        this.size = 0;
     }
 
     //TODO: implementar métodos da interface à custa da estrutura de dados fornecida
+
+    @Override
+    public void enqueue(T element) throws FullQueueException{
+        try{
+            Node n = this.trailer;
+            this.trailer = new Node(element,null,null);
+            if(isEmpty()){
+                this.header = this.trailer;
+            }else{
+                trailer.next = n;
+                trailer.next.prev = this.trailer;
+            }
+            size++;
+            System.out.println(trailer.element);
+        }
+        catch(OutOfMemoryError e){
+            throw new FullQueueException("No memory");
+        }
+    }
+
+    @Override
+    public T dequeue() throws EmptyQueueException{
+        if(isEmpty()) throw new EmptyQueueException();
+        T e = header.element;
+        this.header = this.header.prev;
+        size--;
+        return e;
+    }
+
+    @Override
+    public T front() throws EmptyQueueException{
+        if(isEmpty()) throw new EmptyQueueException();
+
+        return header.element;
+    }
+
+    @Override
+    public int size(){
+        return this.size;
+    }
+
+    @Override
+    public boolean isEmpty(){
+        return (size == 0);
+    }
+
+    @Override
+    public void clear(){
+        this.header = null;
+        this.trailer = null;
+    }
+
 
     private class Node {
         private T element;
@@ -26,5 +83,25 @@ public class QueueLinkedList<T> implements Queue<T> {
             this.next = next;
             this.prev = prev;
         }
+
+        public T getElement(){
+            return this.element;
+        }
+
+        public Node getNext(){
+            return this.next;
+        }
+
+        public Node getPrev(){
+            return this.prev;
+        }
+
+        public void setPrev(Node n){
+            this.prev = n;
+        }
+
+        public void setNext(Node n) { this.next = n;}
+
+        public void setElement(T e) { this.element = e;}
     }
 }
