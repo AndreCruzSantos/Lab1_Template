@@ -1,7 +1,7 @@
 package pt.pa.adts;
 
 /**
- * TODO: Fornecer documentação da classe.
+ * TODO: Fornecer documentação da classe
  *
  * @param <T>
  */
