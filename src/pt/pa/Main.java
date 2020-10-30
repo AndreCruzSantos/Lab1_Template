@@ -3,7 +3,6 @@ package pt.pa;
 import pt.pa.adts.Queue;
 import pt.pa.adts.QueueLinkedList;
 
-import java.sql.SQLOutput;
 
 public class Main {
 
@@ -34,9 +33,5 @@ public class Main {
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
-
-
-        //TODO: testar implementação
-
     }
 }
