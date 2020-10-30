@@ -10,7 +10,7 @@ public class Main {
 
         Queue<Integer> queue = new QueueLinkedList<>();
 
-        try {
+        try{
             for (int i = 0; i < 30; i++) {
                 queue.enqueue(i);
             }

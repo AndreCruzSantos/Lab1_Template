@@ -1,7 +1,5 @@
 package pt.pa.adts;
 
-import java.sql.SQLOutput;
-
 /**
  * TODO: Fornecer documentação da classe.
  *
