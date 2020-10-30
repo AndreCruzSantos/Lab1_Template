@@ -12,6 +12,9 @@ public class QueueLinkedList<T> implements Queue<T> {
     private Node header, trailer;
     private int size;
 
+    /**
+     * Contrutor da classe que inicializa a queue vazia
+     */
     public QueueLinkedList() {
         //TODO: construtor deve inicializar uma fila vazia
         this.header = new Node(null,null,null);
@@ -19,7 +22,6 @@ public class QueueLinkedList<T> implements Queue<T> {
         this.size = 0;
     }
 
-    //TODO: implementar métodos da interface à custa da estrutura de dados fornecida
 
     @Override
     public void enqueue(T element) throws FullQueueException{
@@ -83,25 +85,5 @@ public class QueueLinkedList<T> implements Queue<T> {
             this.next = next;
             this.prev = prev;
         }
-
-        public T getElement(){
-            return this.element;
-        }
-
-        public Node getNext(){
-            return this.next;
-        }
-
-        public Node getPrev(){
-            return this.prev;
-        }
-
-        public void setPrev(Node n){
-            this.prev = n;
-        }
-
-        public void setNext(Node n) { this.next = n;}
-
-        public void setElement(T e) { this.element = e;}
     }
 }

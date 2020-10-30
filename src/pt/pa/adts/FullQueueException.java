@@ -6,6 +6,6 @@ public class FullQueueException extends RuntimeException{
     }
 
     public FullQueueException(){
-        super("The queue is full");
+        super("Queue is full");
     }
 }
