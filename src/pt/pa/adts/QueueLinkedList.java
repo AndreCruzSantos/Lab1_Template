@@ -9,21 +9,24 @@ public class QueueLinkedList<T> implements Queue<T> {
 
     private Node header, trailer;
     private int size;
+    private int capacity;
 
     /**
      * Contrutor da classe que inicializa a queue vazia
      */
-    public QueueLinkedList() {
+    public QueueLinkedList(int capacity) {
         //TODO: construtor deve inicializar uma fila vazia
         this.header = new Node(null,null,null);
         this.trailer = new Node(null,null,null);
         this.size = 0;
+        this.capacity = capacity;
     }
 
 
     @Override
     public void enqueue(T element) throws FullQueueException{
-        try{
+            if(size() == capacity){ throw new FullQueueException();}
+
             Node n = this.trailer;
             this.trailer = new Node(element,null,null);
             if(isEmpty()){
@@ -33,11 +36,6 @@ public class QueueLinkedList<T> implements Queue<T> {
                 trailer.next.prev = this.trailer;
             }
             size++;
-            System.out.println(trailer.element);
-        }
-        catch(OutOfMemoryError e){
-            throw new FullQueueException("No memory");
-        }
     }
 
     @Override
@@ -70,6 +68,7 @@ public class QueueLinkedList<T> implements Queue<T> {
     public void clear(){
         this.header = null;
         this.trailer = null;
+        this.size =0;
     }
 
 
